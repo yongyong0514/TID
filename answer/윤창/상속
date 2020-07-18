@@ -1,0 +1,17 @@
+package problem;
+
+public class TESTTEST {
+	public static void main(String[]args) {
+//		final 변수 사용 목적에 대해서 설명하시오
+/*		특정한 값이 변경되지 않아야 할 때 final(상수)를 사용
+ * 
+ *		예를 들면, 원주율을 구하는 pi값은 변하지 않는 고정된 값 3.14 이기 때문에
+ *
+ *		final double pi = 3.14 와 같이 정의한다
+ *
+ * 		이로서 변수명 pi로 값을 바꾸는 행위는 불가능
+ * 
+ */
+		
+	}
+}
