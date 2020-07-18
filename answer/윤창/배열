@@ -1,0 +1,19 @@
+package problem;
+
+import java.util.*;
+
+public class TESTTEST {
+	public static void main(String[]args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String str [] = {"딸기", "바나나", "복숭아", "키위", "사과"};
+		
+		for(int i = 0; i< str.length; i++) {
+			System.out.println("str["+ i +"]" + " = " + str[i]);
+		}
+		
+		System.out.println("바나나를 인덱스 str[i]를 이용해서 출력");
+		System.out.println(str[1]);
+	}
+
+}
