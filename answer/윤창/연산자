@@ -1,0 +1,22 @@
+package problem;
+
+import java.util.*;
+
+public class TESTTEST {
+	public static void main(String[]args) {
+		Scanner sc = new Scanner(System.in);
+		int num;
+		String str;
+		
+		System.out.print("정수를 입력하세요 : ");
+		num = sc.nextInt();
+		
+		if(num % 2 == 0) {
+			str = "짝수다";
+		}else {
+			str = "홀수다";
+		}
+	System.out.println(str);
+	}
+
+}
