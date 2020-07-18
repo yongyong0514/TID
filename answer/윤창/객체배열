@@ -1,0 +1,94 @@
+package com.kh.silsub1.student.model.vo;
+
+public class Student {
+	private int grade;
+	private int classroom;
+	private int stdNo;
+	private String name;
+	
+	public Student() {}
+
+	public Student(int grade, int classroom, int stdNo, String name) {
+		super();
+		this.grade = grade;
+		this.classroom = classroom;
+		this.stdNo = stdNo;
+		this.name = name;
+	}
+
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+
+	public int getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(int classroom) {
+		this.classroom = classroom;
+	}
+
+	public int getStdNo() {
+		return stdNo;
+	}
+
+	public void setStdNo(int stdNo) {
+		this.stdNo = stdNo;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String information() {
+		return grade + classroom + stdNo + name;
+	}
+
+}
+
+---------------------------------------------------------------
+
+package com.kh.silsub1.student.controller;
+
+import java.util.Scanner;
+
+import com.kh.silsub1.student.model.vo.Student;
+
+public class StudentManager {
+	private Scanner sc = new Scanner(System.in);
+	
+	private Student students[] = new Student[3];
+	
+	public StudentManager() {}
+	
+	public void insertStudentData() {}
+	
+	public void printStudentDate() {}
+	
+}
+
+---------------------------------------------------------------
+
+package com.kh.silsub1.student.run;
+
+import com.kh.silsub1.student.controller.StudentManager;
+
+public class Run {
+
+	public static void main(String[] args) {
+		new StudentManager();
+	}
+
+}
+
+
+
+
