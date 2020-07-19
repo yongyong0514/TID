@@ -1,0 +1,50 @@
+package problem;
+
+public class TESTTEST {
+	public static void main(String[]args) {
+		int num [] = new int [10];
+		boolean dup;
+		
+		for(int i = 0; i < num.length; i++) {
+			while(true) {
+				num[i] = (int)(Math.random() * 50) + 1;
+				
+				dup = false;
+				
+				for(int j = 0; j < i; j++) {
+					if(num[j] == num[i]) {
+						dup = true;
+						break;
+					}
+					
+					if(num[j] != num[i]) {
+						dup = false;
+					}
+				}
+				if(!dup) {
+					break;
+				}
+			}	
+			System.out.printf("%d ", num[i]);
+			
+		}
+		System.out.println();
+		int max = num[0];
+		int min = num[0];
+		int sum = 0;
+		
+		for(int i = 0; i < num.length; i++) {
+			if(num[i] > max) {
+				max = num[i];
+			}
+			
+			if(num[i] < min) {
+				min = num[i];
+			}
+			sum += num[i];
+		}
+		System.out.println("최대값 : " + max);
+		System.out.println("최소값 : " + min);
+		System.out.println("배열 합계 : " + sum);
+	}
+}
