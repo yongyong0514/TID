@@ -1,0 +1,27 @@
+package problem;
+
+import java.util.Scanner;
+
+public class TESTTEST {
+	public static void main(String[]args) {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("자바 점수를 입력하세요 : ");
+		int java = sc.nextInt();
+		
+		System.out.print("오라클 점수를 입력하세요 : ");
+		int oracle = sc.nextInt();
+		
+		int sum = java + oracle;
+		
+		double avg = (java + oracle) / 2;
+		
+		String result = (java >= 40 && oracle >= 40 && avg >= 60)? "통과" : "재시험을 준비하세요";
+		
+		System.out.printf("JAVA 점수 : %d%n", java);
+		System.out.printf("ORACLE 점수 : %d%n", oracle);
+		System.out.printf("총점 : %d%n", sum);
+		System.out.printf("평균 : %.1f%n", avg);
+		System.out.println(result);
+	}
+}
