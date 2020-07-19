@@ -1,0 +1,27 @@
+package problem;
+
+public class TESTTEST {
+	public static void main(String[]args) {
+		int gugu [][] = new int [9][9];
+		int result;
+		
+		for(int i = 0; i < 9; i++) {
+			for(int j = 0; j < 9; j++) {
+				gugu [i][j] = (i + 1) * (j + 1); 
+			}
+		}
+		
+		for(int i = 0; i < 9; i++) {
+			System.out.printf("%2d단 : ", i + 1);
+			for(int j = 0; j < 9; j++) {
+				result = gugu[i][j];
+				if(result < 10) {
+					System.out.printf("%2d ", result);
+				}else {
+					System.out.printf("%2d ", result);
+				}
+			}
+			System.out.println();
+		}
+	}
+}
