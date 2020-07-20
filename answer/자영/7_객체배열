@@ -78,3 +78,61 @@ public class Student {
 		
 	}
 }
+
+
+package problem;
+
+import java.util.Scanner;
+
+public class StudentArray {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Student stu = new Student();
+		Student s[] = new Student[10];
+		
+		int count = 0;
+		
+		while(count < 10) {
+			System.out.print("학년 : ");
+			stu.setGrade(sc.nextInt());
+			
+			System.out.print("반 : ");
+			stu.setCla(sc.nextInt());
+			sc.nextLine();
+			
+			System.out.print("이름 : ");
+			stu.setName(sc.nextLine());
+			
+			System.out.print("국어 점수 : ");
+			stu.setKor(sc.nextInt());
+			
+			System.out.print("영어 점수 : ");
+			stu.setEng(sc.nextInt());
+			
+			System.out.print("수학 점수 : ");
+			stu.setMath(sc.nextInt());
+			
+			s[count] = new Student(stu.getGrade(), stu.getCla(), stu.getName(), stu.getKor(), stu.getEng(), stu.getMath());
+			count++;
+			
+			System.out.print("계속 추가하시겠습니까? : ");
+			String yes = sc.next();
+			
+			if(yes.equals("y") || yes.equals("Y")) {
+				continue;	
+			}else {
+				break;
+			}
+
+		}
+		
+		for(int i = 0; i < count; i++) {
+			System.out.print(s[i].information());
+			System.out.println(" 평균 : " + (s[i].getKor() + s[i].getEng() + s[i].getMath())/3 + "점");
+		}
+		
+
+	}
+
+}
