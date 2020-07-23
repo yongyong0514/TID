@@ -1,0 +1,27 @@
+package practice.study01.others;
+
+import java.util.Scanner;
+
+public class PSA {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int num1;
+		int num2;
+		String result;
+		
+		System.out.print("첫번째 정수 : ");
+		num1 = sc.nextInt();
+		
+		System.out.print("두번째 정수 : ");
+		num2 = sc.nextInt();
+		
+		result = (num1 > num2) ? (num1 + " 이 " + num2 + " 보다 크다. ") : (num2 + " 이 " + num1 + " 보다 크다. ");
+		
+		System.out.println();
+		System.out.println("결과 : " + result);
+
+	}
+
+}
