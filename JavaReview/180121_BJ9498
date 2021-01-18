@@ -1,0 +1,89 @@
+##JAVA
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+    	Scanner sc = new Scanner(System.in);
+        
+        int score = sc.nextInt();
+        
+        sc.close();
+        
+        if(score >= 90) {
+        	System.out.println('A');
+        } else if(score >= 80) {
+        	System.out.println('B');
+        } else if(score >= 80) {
+        	System.out.println('B');
+        } else if(score >= 70) {
+        	System.out.println('C');
+        } else if(score >= 60) {
+        	System.out.println('D');
+        } else {
+        	System.out.println('F');
+        }
+    }
+}
+
+
+##Node.js
+const readline = require('readline');
+
+const rl = readline.createInterface({
+		input: process.stdin,
+        output: process.stdout
+});
+
+rl.on('line', function(line) {
+	const score = Number(line);
+   
+  if (score >= 90) {
+    console.log('A');
+  } else if (score >= 80) {
+    console.log('B');
+  } else if (score >= 70) {
+    console.log('C');
+  } else if (score >= 60) {
+    console.log('D');
+  } else {
+    console.log('F');
+  }
+      
+}).on('close', function() {
+    process.exit();
+});  
+
+
+##Python
+score = int(input())
+
+if score >= 90: print('A')
+elif score >= 80: print('B')
+elif score >= 70: print('C')
+elif score >= 60: print('D')
+else: print('F')
+
+
+##Go
+package main
+
+import "fmt"
+
+func main() {
+		var score int
+        
+        fmt.Scanf("%d", &score)
+        
+        if score >= 90 {
+        	fmt.Println("A")
+        } else if score >= 80 {
+            fmt.Println("B")
+        } else if score >= 70 {
+            fmt.Println("C")
+        } else if score >= 60 {
+            fmt.Println("D")
+        } else {
+            fmt.Println("F")
+        }
+}
