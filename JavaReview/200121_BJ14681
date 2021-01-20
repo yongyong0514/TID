@@ -63,7 +63,69 @@ rl.on('line', function(line){
 
 
 ##Python
+x = int(input())
+y = int(input())
 
+if x > 0:
+    if y > 0:
+        print(1)
+        
+    else:
+        print(4)
+        
+else:
+    if y > 0:
+        print(2)
+        
+    else:
+        print(3)
+	
+	
 ##Go
+package main
+
+import "fmt"
+
+func main() {
+	var x, y int
+    
+    fmt.Scan(&x, &y)
+    
+    if x > 0 {
+    	if y > 0 {
+        	fmt.Println("1")
+        } else {
+        	fmt.Println("4")
+        }
+    } else {
+    	if y > 0 {
+        	fmt.Println("2")
+        } else {
+        	fmt.Println("3")
+        }
+    }
+}
+
 
 ##C
+#include <stdio.h>
+
+int main() {
+	int x, y;
+    
+    scanf("%d %d", &x, &y);
+    
+    if(x > 0) {
+    	if(y > 0) {
+        	printf("1");
+        } else {
+        	printf("4");
+        }
+    } else {
+    	if(y > 0) {
+        	printf("2");
+        } else {
+        	printf("3");
+        }
+    }
+}
