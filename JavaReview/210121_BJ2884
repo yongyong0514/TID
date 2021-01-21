@@ -1,0 +1,60 @@
+##JAVA
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[]args){
+    	Scanner sc = new Scanner(System.in);
+        
+        int H = sc.nextInt();
+        int M = sc.nextInt();
+        
+        if(M < 45) {
+        	H --;
+            M = 60 - (45 - M);
+            	if(H < 0) {
+                	H = 23;
+                }
+                System.out.println(H + " " + M);
+        } else {
+        	System.out.println(H + " " + (M - 45));
+        }
+    }
+}       
+
+
+##Node.js
+const readline = require('readline');
+
+const rl = readline.createInterface({
+	input: process.stdin,
+    output: process.stdout
+});
+
+rl.on('line', function(line){
+	let input = line.split(' ');
+    
+	const H = Number(input[0]);
+    const M = Number(input[1]);
+    
+    if(M < 45){
+    	H --;
+        M = 60 - (45 - M);
+        
+        if(H < 0){
+        	H = 23;
+        }
+        console.log(H + " " + M);
+    } else {
+    	console.log(H + " " + (M - 45));
+    }
+}).on('close', function(){
+    process.exit();
+});
+
+
+##Python
+
+
+##Go
+##C
