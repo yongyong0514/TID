@@ -1,0 +1,30 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+import java.io.IOException;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+ 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+        
+		int a = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
+		
+        int b = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
+		
+		System.out.print(a > b ? a:b);
+		
+	}
+}
+
+이번 문제는 입력받은 숫자를 뒤집어서 출력하되 그 중에서 큰 수를 출력하는 조건입니다.
+
+이전 문제와 마찬가지로 BufferedReader 함수와 StringTokenizer 함수를 사용해서 간단하게 작성했습니다.
+
+입력받은 값을 StringTokenizer st에 저장합니다.
+
+StringTokenizer의 nextToken()으로 각각 INT형 a, b에 저장하는데 reverse() 함수로 숫자의 순서를 반대로 정렬하고 toString으로 String화 한 뒤, INT 형으로 변환합니다.
+
+마지막 출력의 형태를 대소를 비교한 뒤 출력합니다.
