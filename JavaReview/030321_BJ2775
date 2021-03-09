@@ -12,11 +12,12 @@ public class Main {
         
         for(int i = 0; i < T; i++) {
         
-        	int k = Integer.parseInt(br.readLine());
+            int k = Integer.parseInt(br.readLine());
             
             int n = Integer.parseInt(br.readLine());
             
             System.out.println(model(k, n));
+	    //model 메소드에 입력받은 매개변수를 입력 값으로 전달
         }
     }
     
