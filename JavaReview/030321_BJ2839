@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+        
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+		try {
+        
+        	int num = Integer.parseInt(br.readLine());
+        
+			bw.write(model(num) + "\n");
+            bw.flush();
+            bw.close();
+            br.close();
+        
+        } catch(IOException e) {
+        
+        	e.printStackTrace();
+        }
+    }
+    		
+    public static int model(int num) {
+    
+    	if(num % 5 == 0) {
+        
+        	return num / 5;
+    			
+        } else {
+                	
+            int temp = num / 5;
+                    
+            for(int i = temp; i > 0; i--) {
+                    
+                int result = i;
+                        
+                if((num - (i * 5)) % 3 == 0) {
+                        
+                   	result += (num - (i * 5)) / 3;
+                            
+                    return result;       
+                }      
+            }
+        }
+                 
+        if (num % 3 == 0) {
+                 
+           	return num / 3;  
+        }
+                 
+        return -1;            
+    } 
+}
