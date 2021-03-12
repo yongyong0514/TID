@@ -1,0 +1,65 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
+
+public class Main {
+    
+	public static void main(String[] args) throws Exception {
+        
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+       
+       	try {
+        
+       		int di, t = Integer.parseInt(br.readLine());
+		
+        	StringBuilder sb = new StringBuilder();
+		
+        	String line[];
+		
+        
+        	while(t-- > 0){
+            
+				line = br.readLine().split(" ");
+            
+				di = Integer.parseInt(line[1]) - Integer.parseInt(line[0]);
+            
+				sb.append(move(di) + "\n");
+			}
+            
+			bw.write(sb.toString());
+			bw.close();
+			br.close();
+	
+    	} catch(IOException e) {
+    		
+            e.printStackTrace();
+        }
+	}
+    
+	private static long move(int di){
+        
+		long N, minN, maxN, sqrN, work = 0;
+		
+        for(N = 1;;N++){
+			sqrN = N * N;
+			
+            minN = sqrN - N + 1;
+			
+            maxN = sqrN + 1 + N - 1;
+			
+            if(minN <= di && di <= maxN) {
+				
+                if(minN <= di && di <= sqrN) work = (N << 1) - 1;
+				
+                else work = N << 1;
+				break;
+			}
+		}
+		return work;
+	}
+}
