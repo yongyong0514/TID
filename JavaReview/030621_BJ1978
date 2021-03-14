@@ -1,0 +1,66 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class Main {
+    
+    public static void main(String[]args) throws IOException {     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        try {
+            //테스트 케이스의 개수를 입력받습니다.
+            int T = Integer.parseInt(br.readLine());
+            
+            //케이스 개수만큼 숫자를 StringTokenizer로 입력받습니다.
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            
+            //출력할 결과를 카운트할 INT형 result와 테스트 숫자를 저장할 num을 선언합니다.
+            int result = 0;
+            int num;
+            
+            //입력받은 케이스의 숫자의 개수만큼 반복합니다.
+            while(st.hasMoreTokens()) {
+                
+                //입력받은 숫자 하나를 불러서 num에 저장합니다.
+                num = Integer.parseInt(st.nextToken());
+                
+                // 입력 값이 0이나 1인 경우 소수가 아니기 때문에 다음 토큰을 num에 저장합니다.
+                if(num == 1 || num == 0) {
+                    num = Integer.parseInt(st.nextToken());
+                
+                }
+                
+                //소수의 개수를 카운트할 INT변수 prime을 선언합니다.
+                int prime = 0;
+                
+                //2부터 테스트 케이스 개수 1/2제곱까지 반복합니다. 
+                for(int i = 2; i * i <= num; i++) { 
+                    
+                    //입력받은 숫자 중 하나가 i로 나누어져 0이되면 소수가 아닙니다.
+                    if(num % i == 0) {
+                        //소수가 아니면 prime +1 카운트 합니다.
+                        prime++;
+                    }
+                }
+                
+                //소수여서 prime이 카운트되지 않은 경우 0, 즉 소수이기 때문에 결과 result에 +1처리 합니다.
+                if( prime == 0) {
+                    result++;
+                }
+            }
+   
+            bw.write(result + "\n");
+            bw.flush();
+            bw.close();
+            br.close();
+            
+        } catch(IOException e) { 
+            e.printStackTrace();
+        }
+    }
+}
