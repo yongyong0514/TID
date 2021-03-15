@@ -1,0 +1,100 @@
+class Solution {
+    
+    //매개변수로 new_id를 받아 처리하는 solution 메소드 입니다.
+	public String solution(String new_id) {
+        
+        //kakaoid 클래스로 new_id를 매개변수로 전달하는 객체를 생성합니다. 하위 메소드를 전부 실행한 뒤 String id로 결과를 리턴합니다.
+    	String id = new kakaoid(new_id)
+        	.toLowerCase()
+            .filter()
+            .singleDot()
+            .noStartEndDot()
+            .noBlank()
+            .noMoreThan16()
+            .noLessThan2()
+            .result();
+       
+        return id;
+    }
+    
+    //kakaoid 클래스를 생성합니다
+    //static으로 클래스를 선언하면 외부 클래스를 사용할 때 자동으로 생성합니다.
+    //정적 멤버 클래스로 외부클래스의 모든 변수에 접근가능 합니다.
+    private static class kakaoid {
+    	private String id;
+        
+        //kakaoid 객체의 id 속성에 매개변수 id를 저장합니다.
+        kakaoid(String id) {
+        	this.id = id;
+        }
+        
+        //id의 대문자를 소문자로 변환하는 메소드입니다.
+        //toLowerCase()는 대문자를 소문자로
+        //toUpperCase()는 소문자를 대문자로 변환합니다.
+        private kakaoid toLowerCase() {
+        	id = id.toLowerCase();
+            
+            return this;
+        }
+        
+        //조건의 특수문자를 ""으로 대체하는 필터입니다.
+        //replace(CharSequence target, CharSequence replacement)형식으로 문자열만 가능합니다.
+        //replaceAll(String regex, String replacement)는 정규식을 사용해서 replace에서 처리하지 못하는 문자열을 처리할 수 있습니다.
+        // [ ] 안에 문자들이 전부 치환대상이 되어 ""처리되는데 ^의 표기는 제외 조건입니다. 따라서 알파벳 a-z, 숫자 0-9, 마침표와 밑줄 빼기를 제외하고 전부 제거합니다.
+        private kakaoid filter() {
+        	id = id.replaceAll("[^a-z0-9._-]", "");
+            
+            return this;
+        }
+        
+        //마찬가지로 괄호 안의 내용을 치환하는데 길이가 2부터 시작할 경우 하나의 마침표로 변환합니다.
+        private kakaoid singleDot() {
+        	id = id.replaceAll("[.]{2,}", ".");
+            
+            return this;
+        }
+        
+        //마찬가지로 마침표가 시작과 끝에 위치한다면 변환합니다.
+        private kakaoid noStartEndDot() {
+        	id = id.replaceAll("^[.]|[.]$", "");
+            
+            return this;
+        }
+        
+        //공백이 있는지 isEmpty로 체크 후 공백을 a로 처리합니다.
+        private kakaoid noBlank() {
+            id = id.isEmpty() ? "a" : id;
+            
+            return this;
+        }
+        
+        //id의 길이가 16을 초과하는 경우 substring으로 뒤에서 부터 잘라냅니다. 그 후 마지막 항목에 마침표가 있는지 확인해서 대체합니다.
+        private kakaoid noMoreThan16() {
+        	if(id.length() >= 16) {
+            	id = id.substring(0, 15);
+            }
+            
+            id = id.replaceAll("[.]$", "");
+            
+            return this;
+        }
+        
+        //id의 길이가 2보다 작은 경우를 체크합니다 StringBuilder를 사용해서 길이에 관계없이 기존에 데이터에 더할 수 있습니다. 이 경우 길이가 3이 될 때까지 id의 마지막 문자를 더합니다.
+        private kakaoid noLessThan2() {
+        	StringBuilder sb = new StringBuilder(id);
+            
+            while(sb.length() <= 2) {
+            	sb.append(sb.charAt(sb.length() - 1));
+            }
+            id = sb.toString();
+            
+            return this;
+        }
+        
+        //결과를 반납합니다.
+        private String result() {
+        	
+            return id;
+        }
+    }
+}
