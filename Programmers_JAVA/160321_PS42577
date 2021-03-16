@@ -1,0 +1,44 @@
+import java.util.HashMap;
+
+class Solution {
+    //boolean 타입의 메소드는 true와 false를 리턴합니다. 매개변수로 phone_book String 배열을 건네 받습니다.
+    public boolean solution(String[] phone_book) { 
+        
+        //Compare로 phone_book을 처리합니다.
+        return Compare(phone_book);
+    }
+    
+    
+    private boolean Compare(String[] phone_book) {
+        
+        //해시 문제여서 해시를 사용합니다.
+        HashMap<String, Integer> map = new HashMap<String,Integer>(); 
+        
+        //변수 book에 phone_book의 배열을 하나씩 대입합니다.
+        for(String book : phone_book) { 
+            
+            //map에 phone_book의 크기만큼 반복해서 배열 key와 value '1'을 put 합니다.
+            map.put(book, 1); 
+        
+        }    
+        
+        //마찬가지로 변수 book에 phone_book의 배열 값을 하나씩 대입합니다.
+        for(String book : phone_book) { 
+            
+            //phone_book 배열에서 첫번째 배열 값의 book 길이만큼 반복합니다.
+            for(int i = 0; i < book.length(); i++) { 
+                
+                //containsKey를 이용해서 key가 있는지 없는지 확인합니다.
+                //키가 없으면 false, 있으면 true를 반납하는데
+                //map에 저장되어 있는 book의 값과 첫번째 for문에서 저장된 book의 값을 substring으로 쪼개서 반복 증가하며 비교합니다.
+                if(map.containsKey(book.substring(0, i))) { 
+                    
+                    //포함되는 경우 false를 리턴합니다.
+                    return false; 
+                } 
+            } 
+        }
+        //반복 결과가 포함되지 않으면 true를 리턴합니다.
+        return true; 
+    }
+}
