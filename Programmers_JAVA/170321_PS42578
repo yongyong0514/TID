@@ -1,0 +1,40 @@
+import java.util.HashMap;
+
+class Solution {
+    //매개변수로 String 2차원 배열 clothes 를 받습니다.
+    public int solution(String[][] clothes) {
+        //해시 문제여서 해시를 사용합니다.
+        HashMap<String, Integer> map = new HashMap();
+        
+        //옷을 한가지 이상 입어야 하는 조건으로 우선 1로 설정합니다
+        int answer = 1;
+        
+        //clothes의 길이만큼 반복합니다.
+        for(int i = 0; i < clothes.length; i++) {
+            
+            //앞에서 선언한 해시맵에서 clothes 배열을 순차적으로 확인합니다.
+            if(map.get(clothes[i][1]) == null) {
+                
+                //위의 조건에 따라 배열 값이 null인 경우 1을 넣습니다,
+                map.put(clothes[i][1], 1); 
+            
+            } else {
+                //map이 비어있지 않다면  + 1 합니다.
+                map.put(clothes[i][1], map.get(clothes[i][1]) + 1);
+            }
+        }
+        
+        //entrySet()은 key, value 모두 사용합니다.
+        //keySet()메소드는 key의 값만 필요할 때 사용합니다.
+        //따라서 String keys 변수에 map에 저장된 요소들을 하나씩 저장 반복합니다.
+        for(String keys : map.keySet()) {
+            
+            //여기서 입을 수 있는 경우의 수를 구하는데 각 옷의 종류를 입거나 안입거나 선택할 수 있어서 +1을 더하게 됩니다.
+            //반복해서 구한 값을 계속해서 곱하면 모든 경우의 수를 구하게 됩니다.
+            answer *= (map.get(keys) + 1);
+        }
+        
+        //결과의 -1 처리는 입지 않는 경우를 입니다.
+        return answer - 1;
+    }
+}
