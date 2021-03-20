@@ -1,1 +1,72 @@
 import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(int[] answers) {
+        //3케이스를 배열로 전달 받습니다.
+        int[] case1 = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
+      
+        int[] case2 = {2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5};
+      
+        int[] case3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        
+        
+        //각 케이스의 정답의 개수를 카운트할 변수를 선언합니다.
+        int[] count = new int[3];
+        
+        //주어진 정답의 길이만큼 반복합니다.
+        for(int i = 0; i < answers.length; i++) {
+            
+            //정답의 첫번째 배열 값 부터 3개의 케이스를 비교합니다.
+            //정답인 경우 해당 케이스의 정답을 카운트 합니다.
+            if(answers[i] == case1[ i % case1.length]) {
+                
+                count[0]++;
+            }
+            
+            if(answers[i] == case2[ i % case2.length]) {
+                
+                count[1]++;
+            }
+            
+            if(answers[i] == case3[ i % case3.length]) {
+                
+                count[2]++;
+            }
+            
+        }
+            
+        //가장 많은 카운트를 찾기 위해서 Math.max() 메서드를 사용합니다.
+        //Math.max()는 두 값 중에서 큰 값을 리턴합니다.
+        //Math.min()은 두 값 중에서 작은 값을 리턴합니다.
+        int max = Math.max(count[0], Math.max(count[1], count[2]));
+            
+        //리턴 값을 저장할 리스트를 생성합니다.
+        ArrayList<Integer> list = new ArrayList<>();
+            
+            
+        if(max == count[0]) {
+                
+            list.add(1);
+        }
+            
+        if(max ==  count[1]) {
+                
+            list.add(2);
+        }
+            
+        if(max ==  count[2]) {
+                
+            list.add(3);
+        }
+            
+        //Collection 인터페이스에는 stream()메소드가 정의되어 있습니다.
+        //stream은 Collection과 Array에서 주로 사용되며 저장되어 있는 요소를 하나씩 참조해서 참조형 인터페이스인 람다식을 적용하여 반복적으로 처리할 수 있습니다.
+        //따라서 list에 저장되어 있는 모든 요소들을 stream()이하로 처리하기 위해 반복합니다.
+        //stream()을 생성하고 i를 int의 i로 변경 합니다. 그리고 배열로 변경합니다.
+        return list.stream().mapToInt(i -> i.intValue()).toArray();
+            
+        
+        
+    }
+    
+}
