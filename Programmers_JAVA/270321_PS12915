@@ -1,0 +1,14 @@
+class Solution {
+    public long solution(int a, int b) {
+        long answer = 0;
+       
+        //Math.min(), Math.max()로 작은 값과 큰 값을 구한 뒤,
+        //반복문으로 범위를 지정한 뒤 answer에 누적해서 더합니다.
+        for(int i = Math.min(a, b); i <= Math.max(a, b); i++) {
+            
+            answer += i;            
+        }     
+        
+        return answer;
+    }
+}
