@@ -1,0 +1,31 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String s) {
+        
+        //toCharArray()는 String을 char 배열로 변환합니다.
+        //String str = new String(charArr)과 같이 char형 배열을 String으로도 변환할 수 있습니다.
+        //String s의 문자열을 char 배열로 변환했습니다.
+        char [] chr = s.toCharArray();
+        
+        //char 배열을 정렬합니다. 기본 오름차순
+        Arrays.sort(chr);
+       
+         //StringBuilder 클래스는 문자열을 다루는 클래스이며, String클래스와 동일한 메소드를 사용합니다.
+        //charAt(). indexOf(), length(), replace(), substring(), toString()
+        
+        //StringBuilder 전용 메소드
+        //append(String str) 문자열을 StringBuffer에 추가
+        //insert(int offset, String str) 정해진 위치에 문자열 추가
+        //replace(int start, int end, String s) 일부 String 객체 치환
+        //reverse() 문자열이 역순으로 정렬
+        
+        //String 클래스의 valueOf()로 char 배열 chr을 String객체로 변환한 뒤,
+        StringBuilder sb = new StringBuilder(String.valueOf(chr));
+        
+        //StringBuilder sb를 reverse()로 역정렬 후, toString()으로 String으로 변환합니다.
+        String answer = sb.reverse().toString();
+        
+        return answer;
+    }
+}
