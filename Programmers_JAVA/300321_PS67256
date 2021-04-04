@@ -1,29 +1,103 @@
 class Solution {
     public String solution(int[] numbers, String hand) {
         
+        //출력할 문자열이 반복연산이 필요함에 따라 StringBuilder로 효율성을 높입니다.
         StringBuilder sb = new StringBuilder();
         
+        //키패드의 번호 외 위치값으로 왼소 시작점 *에 10, 오른손 # 12를 설정했습니다. 
         int left = 10;
+        
+        //0 값을 체크하기 위한 변수를 선언했습니다.
+        int temp = 0;
         
         int right = 12;
         
-        for(int i = 0; i < numbers.length; i++) {
-            
-            if(numbers[i] == 1 || numbers[i] == 4 || numbers[i] == 7) {
-                    
+        //number 배열의 값을 i에 반복해서 담아 수행합니다.
+        for(int i : numbers) {
+                
+            //왼손 범위인 1, 4, 7인 경우
+            if(i == 1 || i == 4 || i == 7) {
+                
+                //다음 i번째 배열의 왼쪽 위치를 위해 현재 i번째 값을 left에 삽입합니다.
+                left = i;
+                
+                //StringBuilder sb에 L을 추가합니다.
                 sb.append("L");
-                    
-                left = numbers[i];
-                    
-            }
+               
+            //같은 방법으로 오른쪽을 처리합니다.   
+            } else if(i == 3 || i == 6 || i == 9) {
                 
-            if(numbers[i] == 3 || numbers[i] == 6 || numbers[i] == 9) {
-                    
+                right = i;
+                
                 sb.append("R");
-                    
-                right = numbers[i];
-                    
-            }
+             
+            //왼손과 오른손 범위 외인 2, 5, 8, 0 을 처리합니다.    
+            } else {
                 
-            if(numbers[i] == 2 || numbers[i] == 5 || numbers[i] == 8 || numbers[i] == 0) {
-\
+                // 값이 0인 경우
+                if(i == 0) {
+                    
+                    //위치 값을 키패드 순번에 따라 temp에 11을 저장합니다.
+                    temp = 11;
+                
+                //0이 아닌경우 키패드 값을 저장합니다.
+                } else {
+                    
+                    temp = i;
+                }
+                
+                //2, 5, 8, 0은 왼쪽 오륵쪽 범위에 속하지 않으며, i값과 현재 왼쪽, 오른쪽 값의 차에 따라
+                //방향이 정해지도록 해야 합니다.
+                //만약 그 차 값이 같은 경우, 조건의 hand에 따라 처리됩니다.
+                
+                //i는 키패드에서 세로로 1칸 이동 시 3의 배수로 이동하고, 가로로 1칸 이동시 나머지가 1로 떨어집니다.
+                //따라서 왼손과 오른손이 i값까지의 거리를 구하기 위해선, 현재 i값과 왼손, 오른손의 현쟁 위치값의 절대값을 구하고
+                //가로 세로 좌표를 더하면 현재 위치 값을 구할 수 있습니다.
+                int lnum = Math.abs(temp - left) / 3 + Math.abs(temp - left) % 3;
+                
+                int rnum = Math.abs(temp - right) / 3 + Math.abs(temp - right) % 3;
+               
+                //값이 같다면,
+                if(lnum == rnum) {
+                    
+                    //조건의 왼손, 오른손 여부에 따라 처리합니다
+                    if(hand.equals("right")) {
+                        
+                        right = temp;
+                        
+                        sb.append("R");
+                        
+                    } else {
+                        
+                        left = temp;
+                        
+                        sb.append("L");
+                    }
+                
+                //값이 다른 경우는
+                } else {
+                    
+                    //왼쪽과 오른쪽으로 나누어 작은 쪽으로 처리합니다.
+                    if(rnum > lnum) {
+                        
+                        left = temp;
+                        
+                        sb.append("L");
+                    
+                    } else {
+                        
+                        right = temp;
+                        
+                        sb.append("R");
+                    } 
+
+                }
+                     
+            }
+            
+        }
+        
+        //StrinBuilder sb의 값을 String화해서 반납합니다.
+        return sb.toString();
+    }
+}
