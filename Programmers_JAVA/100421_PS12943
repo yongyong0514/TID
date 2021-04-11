@@ -1,1 +1,38 @@
-v
+class Solution {
+    public int solution(long num) {
+        int answer = 0;
+        
+        //1이 아닐때까지 반복합니다
+        while(num != 1) {
+            
+            //나머지가 0인 짝수인 경우,
+            if(num % 2 == 0) {
+                
+                //조건에 따라 2로 나눕니다
+                num = num / 2;
+            
+            //짝수가 아닌 홀수인 경우,
+            } else {
+                
+                //조건에 따라 3을 곱하고 1을 더합니다.
+                num = num * 3 + 1;
+    
+            }
+            
+            //if, else 연산 1회 카운트를 증가시킵니다.
+            answer++;
+            
+            //조건에 따라 카운트가 500이 되면,
+            if(answer == 500) {
+                
+                //카운터를 -1로 설정하고,
+                answer = -1;
+                
+                //반복을 종료합니다.
+                break;
+            }
+        }
+        
+        return answer;
+    }
+}
